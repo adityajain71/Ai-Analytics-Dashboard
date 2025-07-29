@@ -1,0 +1,162 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 234 37% 8%; /* Dark background as text in light mode */
+    --card: 0 0% 98%;
+    --card-foreground: 234 37% 8%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 234 37% 8%;
+    --primary: 323 100% 55%; /* Hot Pink #FF4EC3 */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 234 37% 8%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 226 13% 45%; /* Darker muted text for light mode */
+    --accent: 323 100% 55%; /* Hot Pink */
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 231 22% 88%; /* Lighter border for light mode */
+    --input: 240 5.9% 90%;
+    --ring: 323 100% 55%;
+    --chart-1: 323 100% 55%; /* Accent Pink #FF1FB4 */
+    --chart-2: 197 100% 50%; /* Accent Blue #00B9FF */
+    --chart-3: 170 75% 56%; /* Chart Teal #2CD5C4 */
+    --chart-4: 266 76% 58%; /* Purple Start #7B30E3 */
+    --chart-5: 323 100% 55%; /* Hot Pink #FF4EC3 */
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 234 37% 8%; /* Dark Background #0B0E1C */
+    --foreground: 0 0% 100%; /* White Text #FFFFFF */
+    --card: 235 30% 13%; /* Card BG #141627 */
+    --card-foreground: 0 0% 100%;
+    --popover: 235 30% 13%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 323 100% 55%; /* Hot Pink #FF4EC3 */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 235 30% 13%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 235 30% 13%;
+    --muted-foreground: 226 13% 65%; /* Muted Text #9FA1B5 */
+    --accent: 323 100% 55%; /* Accent Pink #FF1FB4 */
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 231 22% 18%; /* Dark Blue Border #1E2238 */
+    --input: 235 30% 13%;
+    --ring: 323 100% 55%;
+    --chart-1: 323 100% 55%; /* Accent Pink #FF1FB4 */
+    --chart-2: 197 100% 50%; /* Accent Blue #00B9FF */
+    --chart-3: 170 75% 56%; /* Chart Teal #2CD5C4 */
+    --chart-4: 266 76% 58%; /* Purple Start #7B30E3 */
+    --chart-5: 318 100% 59%; /* Purple End #D633FF */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom animations */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}
+
+/* Purple gradient utility */
+.bg-purple-gradient {
+  background: linear-gradient(135deg, #7B30E3 0%, #D633FF 100%);
+}
+
+/* Text gradient utility */
+.text-purple-gradient {
+  background: linear-gradient(135deg, #7B30E3 0%, #D633FF 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  /* Ensure the element has content for the gradient to work */
+  display: inline-block;
+}
+
+/* Fallback for when gradient doesn't work */
+@supports not (background-clip: text) {
+  .text-purple-gradient {
+    color: #7B30E3;
+    background: none;
+    -webkit-text-fill-color: unset;
+  }
+}
+
+/* Safari fix for gradient text */
+@supports (-webkit-background-clip: text) {
+  .text-purple-gradient {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+/* Text glow effects */
+.text-glow-purple {
+  text-shadow: 0 0 10px #7B30E3, 0 0 20px #7B30E3, 0 0 30px #7B30E3;
+}
+
+.text-glow-pink {
+  text-shadow: 0 0 10px #FF1FB4, 0 0 20px #FF1FB4, 0 0 30px #FF1FB4;
+}
+
+/* Card glow effects */
+.card-glow {
+  box-shadow: 0 0 20px rgba(123, 48, 227, 0.2), 0 0 40px rgba(214, 51, 255, 0.1);
+}
+
+.card-glow-pink {
+  box-shadow: 0 0 20px rgba(255, 31, 180, 0.3), 0 0 40px rgba(255, 78, 195, 0.2);
+}
+
+/* Background depth effects */
+.bg-shadow-purple {
+  background: radial-gradient(circle at center, rgba(62, 14, 94, 0.5) 0%, transparent 70%);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
+}
